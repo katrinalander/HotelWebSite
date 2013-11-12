@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Paradise hotel</title>
+	<script src="js/angular.js"></script>
+	<script src="js/angular-cookie.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/factories.js"></script>
+	<script src="js/user.js"></script>
+	<script src="js/reserv.js"></script>
+	<script src="js/search.js"></script>
+	<script src="js/cabinet.js"></script>
+	<script src="js/deal.js"></script>
+	<script src="js/feedbackCtrl.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+	<style type="text/css">
+		/*Define Accordion box*/  
+		.accordion {   
+		     width:auto;  
+		     overflow:hidden;   
+		     margin:10px auto;   
+		     color:#474747;   
+		     background:#414141;   
+		     padding:0px; 
+		     border-radius: 7px 7px 7px 7px;  
+		} 
+		.accordion section{   
+		      float:left;  
+		      overflow:hidden;   
+		      color:#333;   
+		      cursor:pointer;   
+		      background: #333;   
+		      margin:3px;   
+		}  
+		.accordion section:hover {  
+		      background:#444;  
+		}
+		.accordion section p {   
+		      display:none;   
+		}  
+		.accordion section:after{  
+		      position:relative;  
+		      font-size:24px;  
+		      color:#000;  
+		      font-weight:bold;  
+		}  
+		.accordion section:nth-child(1):after{}  
+		.accordion section:nth-child(2):after{}  
+		.accordion section:nth-child(3):after{}  
+		.accordion section:nth-child(4):after{}  
+		.accordion section:nth-child(5):after{}  
+		.accordion section:target {   
+		      background:#FFF;   
+		      padding:0px;  
+		}  
+		.accordion section:target:hover {   
+		      background:#FFF;   
+		}  
+		.accordion section:target h2 {  
+		      width:100%; 
+		}  
+		.accordion section:target h2 a{   
+		      color:orange;   
+		      padding:10px;
+
+		}  
+		.accordion section:target p {  
+		      display:block;  
+		}  
+		.accordion section h2 a{  
+		      padding:8px 10px;  
+		      display:block;   
+		      font-size:18px;   
+		      font-weight:normal;  
+		      color:orange;   
+		      text-decoration:none;   
+		}
+		.horizontal section{   
+		      width:45px;   
+		      height:250px;   
+		      -moz-transition: width 0.2s ease-out;   
+		      -webkit-transition:width 0.2s ease-out;  
+		      -o-transition:width 0.2s ease-out;  
+		      transition:width 0.2s ease-out;  
+		} 
+		/*Position the number of the slide*/  
+		.horizontal section:after{  
+		      top:140px;  
+		      left:15px;  
+		} 
+		 /*Header of closed slide*/  
+		.horizontal section h2 {   
+		     -webkit-transform:rotate(90deg);  
+		     -moz-transform:rotate(90deg);  
+		     -o-transform: rotate(90deg);  
+		     transform: rotate(90deg);  
+		     width:240px;   
+		     position:relative;   
+		     left:-100px;   
+		     top:150px;  
+		}   
+		/*On mouse over open slide*/  
+		.horizontal :target{   
+		     width:65%;  
+		     height:250px;   
+		     border-radius: 7px 7px 7px 7px; 
+		}  
+		.horizontal :target h2{   
+		     top:0px;  
+		     left:0;  
+		     -webkit-transform:rotate(90deg);  
+		     -moz-transform:rotate(90deg);  
+		     -o-transform: rotate(90deg);  
+		     transform: rotate(90deg);   
+		}
+		.home-img{
+		background-image: url('../pic-hotel/home.jpg'); 
+		height: 250px;
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		}    
+		.feedback-img{
+		background-image: url('../pic-hotel/feedback.jpg'); 
+		height: 250px;
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		}  
+		.view-img{
+		background-image: url('../pic-hotel/view.jpg'); 
+		height: 250px;
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		} 
+		.search-img{
+		background-image: url('../pic-hotel/search.jpg'); 
+		height: 250px; 
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		}
+		.deal-img{
+		background-image: url('../pic-hotel/deal.jpg'); 
+		height: 250px;
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		}
+		.login-img{
+		background-image: url('../pic-hotel/login.jpg'); 
+		height: 250px;
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		}
+		.cabinet-img{
+		background-image: url('../pic-hotel/cabinet.jpg'); 
+		height: 250px;
+		margin-top:-10px;
+		border-radius: 7px 7px 7px 7px; 
+		}              
+	</style>   
+<link href="css/bootstrap.min.css">
+<link href="css/datepicker.css">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+</head>
+<body ng-app="myApp" ng-controller="viewCtrl">
+    
+   	<div class="container">
+   			<header>
+    			<h1>Paradise hotel</h1>	
+    		</header>
+    	<!-- div class="navbar navbar-fixed">
+    		<nav class="navbar-inner">
+    			<a class="brand" href="#/">Online reservation</a>
+    			<ul class="nav nav-pills">
+    				<li class="divider-vertical"></li>
+    				<li class="dropdown">
+    					<a href="#/view">OUR SUITES</a>
+    				</li>
+    				<li class="dropdown">
+    					<a href="#/search">SEARCH</a>
+    				</li>
+    				<li class="dropdown">
+    					<a href="#/deal">HOT DEALS</a>
+    				</li>
+    				<li class="dropdown">
+    					<a href="#/feedback">FEEDBACK</a>
+    				</li>
+    				<li class="dropdown" >
+    					<a href="#/login">logIN/OUT</a>
+    				</li>
+    				<li class="dropdown">
+    					<a href="#/cabinet">{{user.email}}</a>
+    				</li>
+    			</ul>
+    			
+    		</nav>
+    	</div-->
+ <div class="accordion horizontal">  
+    <section id="home">
+    <div class="home-img">
+        <h2><a href="#home">          </a></h2>  
+    </div>
+    </section>  
+  
+    <section id="view">
+    <div class="view-img">  
+        <h2><a href="#view">           </a></h2>  
+    </div>
+    </section>  
+  
+    <section id="search"> 
+    <div class="search-img"> 
+        <h2><a href="#search">             </a></h2>  
+    </div>
+    </section>  
+  
+    <section id="deal">
+    <div class="deal-img">  
+        <h2><a href="#deal">            </a></h2>  
+    </div>
+    </section>  
+  
+    <section id="feedback">
+    <div class="feedback-img"> 
+        <h2><a href="#feedback">         </a></h2>  
+    </div> 
+    </section>
+    
+    <section id="login">
+    <div class="login-img">  
+        <h2><a href="#login">          </a></h2>  
+    </div>
+    </section> 
+    
+    <section id="cabinet" ng-show="emailShow">
+    <div class="cabinet-img">  
+        <h2><a href="#cabinet">{{user.email}}</a></h2>  
+    </div>
+    </section>   
+</div>
+    	
+	<div class="container">
+  		<ng-view></ng-view>
+	</div>
+</div> 
+<script src="js/bootstrap.min.js"></script> 
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Feedback</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/feedbackCtrl.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+	<link href="WebContent/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+	<style type="text/css">
+  		.mySpan{ padding: 10px;}
+  		
+    </style>
+</head>
+<body ng-app='myApp' ng-controller='feedbackCtrl'>
+	<div class="mySpan">
+		<h2>Your feedback about our services</h2>
+		<h5>Your opinion is very important to us</h5>
+		<div ng-show="indicator">
+			<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+		</div>
+	<div ng-hide="indicator">
+	<div class="well well-small">
+	    <p>Leave messages can only registered users.</p>
+	    <hr/>
+	    <div class="control-group">
+	        <input type="text" class="input-xlarge" name="email" ng-model="email" placeholder="E-mail">
+	    </div>
+	    <div class="control-group">
+		    <rating value="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar"></rating>
+		    <span class="badge" ng-class="{'badge-warning': percent<30, 'badge-info': percent>=30 && percent<70, 'badge-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+			<small>(please choose your satisfaction)</small>
+			
+		</div>
+	    <div class="control-group">
+	    	        <textarea type="text" rows="7" class="input-xxlarge" ng-model="message" placeholder="Your comment here..."></textarea>
+	    </div>
+	    <!-- pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+	
+	    <!-- button class="btn btn-small btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+	    <button class="btn btn-small" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button-->
+	    <button class="btn btn-warning" ng-click="feedback()">Send feedback</button>
+	</div>
+		
+		<div ng-repeat="feed in fedbs">
+			<div class="well"><button class="close" ng-show="feed.status" ng-click="deleteFeed($index)"><small>remove</small></button>
+			<h5>{{feed.name}}</h5>
+			<small>Satisfaction: </small><span class="badge" ng-class="{'badge-warning': feed.raiting<30, 'badge-info': feed.raiting>=30 && feed.raiting<70, 'badge-success': feed.raiting>=70}">{{feed.raiting}}%</span>
+			<hr/>
+			<p>{{feed.message}}</p>
+			<small>this message was send: <em>{{feed.date}}</em></small>
+			</div>
+		</div>	
+	</div>
+	</div>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script> 
+</body>
+</html>

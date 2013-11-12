@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="js/angular.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	<script src="js/angular-cookie.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/deal.js"></script>
+	<script src="js/factories.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+	<link href="WebContent/css/bootstrap.min.css">
+	<style type="text/css">
+	  .mySpan,.row{ padding: 10px;margin-bottom: -20px;}
+	  .span10{ margin-top:-35px; }
+	  p{padding:0px;}
+	  </style>
+<title>Big deal</title>
+</head>
+<body ng-app="myApp" ng-controller="dealCtrl">
+	<div class="mySpan">
+		<h2>Hot deals</h2>
+		<h5>only today...</h5>
+		<div ng-show="indicator">
+				<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+		</div>
+		<div ng-hide="indicator">
+		<div ng-repeat="room in rooms" ng-hide="showDeals">
+			<div class="well" >
+			<div class="row">
+			<div class="span10">
+				<h3>{{room.type}}</h3>
+			</div>
+					<div class="row">
+					<div class="span3">
+						<img src="{{room.imageUrl}}"><br/>
+					</div>
+					
+					<div class="span8">
+						<p>{{room.description}}</p>
+						<div class="row">
+						<div class="span3">
+							<p style="font-size:15px">This deal only for next dates reservation:</p>
+						</div>
+						<div class="span3">
+							<p style="font-size:15px"><ins>from:</ins> <em>{{checkIn | date:'fullDate'}}</em><br>
+							<ins>up to:</ins> <em>{{checkOut | date:'fullDate'}}</em></p>
+						</div>
+						</div>
+						<div class="row">
+						<div class="span3">
+							<p style="margin-left:50px;">Price regular: <big><del>{{room.price_regular | currency}}</del></big></p>
+							<h3 style="margin-left:50px;">Price deal: {{room.price_deal | currency}}</h3>
+						</div>
+							<div class="span3"><br>
+							<input type="button" class="btn btn-warning" value="Reserve" data-toggle="modal" data-target="#reserveModal" ng-click="reserveData($index)">
+						</div>
+						</div>
+					</div>
+					</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<div ng-show="showDeals">
+			<h3>We apologize, but at this moment we haven't special deals.</h3>
+		</div>
+	</div>
+<!-- ------------------Modal window for reservation---------------------- -->
+		<div class="modal fade" id="reserveModal">
+  			<div class="modal-header">
+    			<button class="close" data-dismiss="modal">x</button>
+    			<h4>Are You want to reserve {{type}}?</h4>
+  			</div>
+  			<div class="modal-body" ng-hide="alertShow">
+  				<p>This price only for this period and only now.</p>
+				<p>Check in date will be {{checkIn | date:'fullDate' }}</p>
+				<p>Check out date will be {{checkOut | date:'fullDate' }}</p>
+				<h5>Total: {{total | currency}}</h5>
+  			</div>
+  			<div class="span5" ng-show="alertShow">
+				  			<alert ng-repeat="alert in alerts" type="alert.type"><p>{{alert.msg}}</p></alert>
+				  		</div>
+  			<div class="modal-footer">
+    			<a href="#" class="btn" data-dismiss="modal">NO</a>
+    			<a class="btn btn-warning" ng-hide="alertShow" ng-click="addReserv()" data-dismiss="modal">YES</a>
+  			</div>
+		</div>
+</body>
+</html>

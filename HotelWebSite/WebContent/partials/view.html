@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Paradise Hotel</title>
+	<script src="js/angular.js"></script>
+	<script src="js/app.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<link href="WebContent/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+</head>
+<body ng-app="myApp" ng-controller='viewCtrl'>
+	
+<div>
+	<ul class="thumbnails">
+        <li class="span4 mySpan" ng-repeat="room in rooms" >
+        	<div class="thumbnail">
+	          	<a href="#/room/{{$index}}"><img src="{{room.imageUrl}}"></a>
+	          	<h3 align="center">{{room.type}}</h3> 
+	          	<p>{{room.description}}</p>
+	          	<p align="center">Price: ${{room.price_regular}} per night</p>
+	          	<p align="center"><a class="btn btn-warning" href="#/room/{{$index}}">Reservation</a></p>
+        	</div>
+        </li>
+      </ul>
+</div>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script> 
+</body>
+</html>

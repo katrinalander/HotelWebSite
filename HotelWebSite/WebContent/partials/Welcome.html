@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="js/angular.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	<script src="js/angular-cookie.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/factories.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+	<link href="WebContent/css/bootstrap.min.css">
+	<style type="text/css">
+	  .mySpan{ padding: 10px;
+	  background-image: linear-gradient(to bottom, black, white);
+	  }
+	   p {
+    text-indent: 20px;
+    align:justify;
+   }
+	  </style>
+<title>Paradise hotel</title>
+</head>
+<body  ng-app="myApp" ng-controller="viewCtrl">
+	<div class="container mySpan">
+	<header align="center"><img src="/img/Logo.png" align="top""></header>
+	<h2 align="center">Welcome to our site {{client_name}}</h2>
+	<p>This site has been designed for the technical interview by Katrina Lander. 
+	The project has been used Bootstrap, AngularJS, HTML, CSS, Java, MySQL.</p>
+	<p>Site is a sample of the hotel. On the "OUR SUITES" you can see the types of rooms and levels and can create reservation. 
+	The page "SEARCH" is presented for finding and booking multiple rooms for groups. Of course all of the reservations held 
+	to registered customers, so for registered member sub-menu appears with name of his e-mail. 
+	Going to this link a customer can see their current reservations, cancel them or to update his contact details. In any hotel must be 
+	"Hot deal" prices, for this I created page "HOT DEAL", here is You can see type of room in deal price, but if this type in amount more than 5
+	 for next 3 days.</p>
+	<p>And of course, what site without "FEEDBACK", here is customers can leave their comment and put rating for site, and automatically will be send
+	email to admin with name, email, rating and comment. Most operations in site are followed by confirmation email.</p> 
+	<p>All data is processed and entered into the database of MySQL.</p>
+	</div>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

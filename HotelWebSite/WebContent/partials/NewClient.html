@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en' ng-app="app" ng-controller="Controller">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>New Client form</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/user.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+	<link href="WebContent/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+	<style type="text/css">
+  		.mySpan{ padding: 10px;}
+  		p{color:orange;}
+    </style>
+</head>
+<body ng-controller='Controller'>
+<fieldset>
+  <legend><h3>Register form </h3><p>(* fields required to fill)</p></legend>
+  <div  class="mySpan">
+  		<div ng-show="indicator">
+			<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+		</div>
+	<div ng-hide="indicator">
+    <div class="control-group">
+      <label class="control-label" for="fname">*First Name:</label>
+      <div class="controls">
+      <fieldset  class={{fName}}>
+        <input type="text" class="input-xlarge" name="fname" ng-model="fname" placeholder="first name"><img src={{icon1}}>{{messFN}}
+       </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="lname">*Last Name:</label>
+      <div class="controls">
+      <fieldset  class={{lName}}>
+        <input type="text" class="input-xlarge" name="lname" ng-model="lname" ng-click="validFName()" placeholder="last name"><img src={{icon2}}>{{messLN}}
+       </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="email">*E-mail:</label>
+      <div class="controls">
+       <fieldset  class={{fieldEmail}}>
+        <input type="text" class="input-xlarge" name="email" ng-model="email" ng-click="validLName()" placeholder="e-mail"><img src={{icon3}}>{{messEmail}}
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="age">*Address:</label><img src={{icon4}}>{{messAddress}}
+      <div class="controls">
+       <fieldset  class={{fieldAddress}}>
+        <input type="text" class="input-xlarge" name="addr1" ng-model="addr1" ng-click="validEmail()" placeholder="street#1">
+        <input type="text" class="input-xlarge" name="addr2" ng-model="addr2"" placeholder="street#2"><br/>
+        <input type="text" class="input-xlarge" name="sity" ng-model="sity" ng-click="validEmail()" placeholder="sity"><br/>
+        <input type="text" class="input-xlarge" name="state" ng-model="state" ng-click="validEmail()"  placeholder="state"><br/>
+ 		<input type="text" class="input-xlarge" name="zip" ng-model="zip" ng-click="validEmail()"  placeholder="zip"><br/>
+ 		<input type="text" class="input-xlarge" name="country" ng-model="country" ng-click="validEmail()"  placeholder="country"><br/>
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="phone">*Phone:</label>
+      <div class="controls">
+       <fieldset  class={{fieldPhone}}>
+ 		<input type="text" class="input-xlarge" name="phone" ng-model="phone" ng-click="validAddress()"><img src={{icon5}}>{{messPhone}}
+ 		</fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password">*Password:</label>
+      <div class="controls">
+       <fieldset  class={{fieldPassword}}>
+        <input type="password" class="input-xlarge" name="password" ng-model="password" ng-click="validPassword()"><img src={{icon6}}>{{messPassword}}
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="age">*Confirm password:</label>
+      <div class="controls">
+       <fieldset  class={{fieldConfpassword}}>
+        <input type="password" class="input-xlarge" name="confpassword" ng-model="confpassword" ng-click="validConfirm()"><img src={{icon7}}>{{messConfpassword}}
+      </fieldset>
+      </div>
+    </div>
+    
+    <div class="form-actions navbar-static-bottom">
+      <button type="submit" class="btn btn-warning btn-large" ng-click="buttonOK()">Submit</button>
+      <button type="reset" class="btn" >Cancel</button>
+    </div>
+    </div>
+    </div>
+  </fieldset>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script> 
+</body>
+</html>

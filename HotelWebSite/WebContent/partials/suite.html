@@ -1,0 +1,126 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+    <script src="app.js"></script>
+    <script src="bootrap-carousel.js"></script>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    
+    <style type="text/css">
+  		.mySpan{ padding: 10px;}
+	    .table-borderless td,
+		.table-borderless th{ 
+   		 border: 0 !important
+		}
+		.row-padded {
+		  background-color: #F7F7F7;
+		}
+		#picModal{
+		    width: 800px;
+		     'margin-left': function () {
+            return -($(this).width() / 2);
+		}
+    </style>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css">  
+  </head>
+  <body>
+
+<div ng-app="myApp" ng-controller="roomCtrl">
+
+
+	<div class="row">
+		<div class="span12 mySpan">
+			<h2 align="center">{{room.type}}</h2>
+			<div ng-show="indicator">
+				<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+			</div>
+			
+			<div class="row" ng-hide="indicator">
+				<div class="span4">
+					<a data-toggle="modal" data-target="#picModal" rel="tooltip" title="more pictures">
+						<img src="{{room.imageUrl}}">
+					</a>
+					<h5 align="center"><em>{{room.price_regular | currency}} p/night</em></h5><h2 align="center">{{price | currency}}</h2>
+					<p  align="center">
+					<input type="button" class="btn btn-warning" value="Calculate" ng-click="buttonDate()">
+					<input type="button" class="btn btn-warning" ng-hide="alertShow" value="Reservation" data-toggle="modal" data-target="#reserveModal" ng-click="reservDate()"></p>
+				</div>
+				<div class="row">
+				<div class="span8">
+					<h5>{{room.description}}</h5>
+					<div class="row-padded">
+					<div ng-hide="alertShow">
+						<table class="table table-responsive"><tr class="table-borderless"><td>
+						Selected check in date is:</td><td>Selected check out date is: </td></tr><tr class="table-borderless"><td>
+						<em>{{dt1 | date:'fullDate' }}</em></td><td><em>{{dt2 | date:'fullDate' }}</em></td></tr>
+						</table></div>
+					</div>
+					<div class="row">
+						<div class="span8">
+				  			<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)"><p>{{alert.msg}}</p></alert>
+				  		</div>
+					</div>
+		<div class="row">
+		<div class="span4">
+			<!-- -----DATE IN------- -->
+		<h4>Choose check in date:</h4>
+	    <div class="well well-small pull-left" ng-model="dt1">
+	        <datepicker min="dt" max="max" show-weeks="showWeeks" date-disabled="disabled(date, mode)"></datepicker>
+	    </div>
+		</div>
+		<div class="span4">
+    <!-- ------------DATE OUT------------- -->
+    	<h4>Choose check out date:</h4>    
+		<div class="well well-small pull-left" ng-model="dt2">
+	        <datepicker min="dt1"  show-weeks="showWeeks" date-disabled="disabled(date, mode)"></datepicker>
+	    </div>
+	    </div>
+	    </div>
+
+	</div>
+	</div>
+    </div>
+</div>
+</div>
+
+<!-- ----------------------Modal window for picture--------------------- -->
+		<div class="modal fade" id="picModal">
+  			<div class="modal-header">
+    			<button class="close" data-dismiss="modal">x</button>
+    			<h4>{{room.type}}</h4>
+  			</div>
+  			<div>
+  				<carousel>
+  					<slide ng-repeat="slide in slides" active="slide.active">
+  						<img ng-src="{{slide.image}}" width="800px"; height="600px";>
+  						<div class="carousel-caption">
+        					<p>{{slide.text}}</p>
+      					</div>
+   					</slide>
+  				</carousel>
+  			</div>
+		</div>
+<!-- ------------------Modal window for reservation---------------------- -->
+		<div class="modal fade" id="reserveModal">
+  			<div class="modal-header">
+    			<button class="close" data-dismiss="modal">x</button>
+    			<h4>Are You want to reserve {{room.type}}?</h4>
+  			</div>
+  			<div class="modal-body" ng-hide="alertShow">
+				<p>Check in date will be {{checkIn | date:'fullDate' }}</p>
+				<p>Check out date will be {{checkOut | date:'fullDate' }}</p>
+				<h5>Total: {{total | currency}}</h5>
+  			</div>
+  			<div class="span5" ng-show="alertShow">
+				  			<alert ng-repeat="alert in alerts" type="alert.type"><p>{{alert.msg}}</p></alert>
+				  		</div>
+  			<div class="modal-footer">
+    			<a href="#" class="btn" data-dismiss="modal">NO</a>
+    			<a class="btn btn-warning" ng-click="addReserv()" ng-hide="alertShow" data-dismiss="modal">YES</a>
+  			</div>
+		</div>
+</div>
+  </body>
+</html>

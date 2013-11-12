@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="js/angular.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	<script src="js/angular-cookie.js"></script>
+	<script src="js/cabinet.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/factories.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+	<link href="WebContent/css/bootstrap.min.css">
+	<style type="text/css">
+	  .mySpan{ padding: 10px;}
+	  </style>
+<title>Cabinet</title>
+
+</head>
+<body>
+	<div class="container mySpan"  ng-app="myApp" ng-controller="cabCtrl">
+	<ul class="nav nav-tabs">
+	  <li class="active">
+	    <a href="#tab1" data-toggle="tab">Reservations</a>
+	  </li>
+	  <li><a href="#tab2" data-toggle="tab" ng-click="userData()">Profile</a></li>
+	</ul>
+	<div class="tab-content">
+	<div class="tab-pane active" id="tab1">
+	<h3>Hello {{email}}</h3>
+	<div ng-show="indicator">
+		<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+	</div>
+	<div ng-hide="indicator">
+		<h5>You current reservations are:</h5><hr/>
+			<table class="table table-striped"><tr><td><h5>Reserve ID</h5></td><td><h5>Check in</h5></td><td><h5>Check out</h5></td><td><h5>Type of room</h5></td><td><h5>Price</h5></td><td></td></tr>
+	        <tr  ng-repeat="res in reserve"><td>
+	          {{res.reservId}}</td><td>{{res.checkIn | date:'fullDate' }}</td><td>{{res.checkOut | date:'fullDate' }}</td><td>{{res.type}}</td><td>${{res.price}}</td><td><a class="btn btn-warning" data-toggle="modal" data-target="#delModal" ng-click="getData($index)" >cancel reserve</a></td>
+	        </tr>
+      	</table>
+    
+	<br>
+	<div ng-show="cancelVisio">
+	<h5>Your last desired reservation:</h5><hr/>
+		<table class="table table-striped"><tr><td><h5>Room type</h5></td><td><h5>Check in date</h5></td><td><h5>Check out</h5></td><td><h5>Price</h5></td><td></td><td></td></tr><tr><td>
+			{{room_type}}</td><td>
+			{{checkIn | date:'fullDate' }}   </td><td>
+			{{checkOut | date:'fullDate' }}  </td><td>
+			${{price}}</td><td>
+			<input type="button" class="btn btn-warning"  value="reserve" ng-click="addReserv()"></td><td>
+			<input type="button" class="btn btn-warning"  value="cancel" ng-click="cancelReserve()"></td></tr>
+		</table>
+		</div>
+		</div>
+	</div>
+<!-- -------------------------------------------Second part------------------------------------------------------------------ -->
+	<div class="tab-pane" id="tab2">
+		<h3>Private information for {{email}}</h3>
+		<div ng-show="indicator">
+			<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+		</div>
+	<div ng-hide="indicator">
+		<div class="control-group">
+	      <label class="control-label" for="fname">Full Name:</label>
+	      <div class="controls">
+	      <fieldset  class={{fName}}>
+	        <input type="text" class="input-xlarge" ng-model="name"><img src={{icon1}}>{{messFN}}
+	       </fieldset>
+	      </div>
+	    </div>
+    <div class="control-group">
+      <label class="control-label" for="email">E-mail:</label>
+      <div class="controls">
+       <fieldset  class={{fieldEmail}}>
+        <input type="text" class="input-xlarge" ng-model="nemail" ng-click="validFName()" placeholder="e-mail"><img src={{icon2}}>{{messEmail}}
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="age">Address:</label>
+      <div class="controls">
+       <fieldset  class={{fieldAddress}}>
+        <textarea type="text" class="input-xlarge" ng-model="address" ng-click="validEmail()"></textarea><img src={{icon3}}>{{messAddress}}
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="phone">Phone:</label>
+      <div class="controls">
+       <fieldset  class={{fieldPhone}}>
+ 		<input type="text" class="input-xlarge" name="phone" ng-model="phone" ng-click="validAddress()"><img src={{icon4}}>{{messPhone}}
+ 		</fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password">Current password:</label>
+      <div class="controls">
+       <fieldset  class={{fieldcurPassword}}>
+        <input type="password" class="input-xlarge"ng-model="curpass" ng-click="validPhone()" placeholder="current password"><img src={{icon5}}>{{messcurPassword}}
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password">New password:</label>
+      <div class="controls">
+       <fieldset  class={{fieldPassword}}>
+        <input type="password" class="input-xlarge" ng-model="newpass" ng-click="validcurPassword()" placeholder="new password"><img src={{icon6}}>{{messPassword}}
+      </fieldset>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="age">Confirm password:</label>
+      <div class="controls">
+       <fieldset  class={{fieldConfpassword}}>
+        <input type="password" class="input-xlarge" ng-model="confpass" ng-click="validConfirm()" placeholder="repeat new password"><img src={{icon7}}>{{messConfpassword}}
+      </fieldset>
+      </div>
+    </div>
+    	<div class="form-actions navbar-static-bottom">
+	      <button type="submit" class="btn btn-warning btn-large" ng-click="buttonOK()">Submit</button>
+	      <button type="submit" class="btn" data-toggle="modal" data-target="#delUser">Delete</button>
+	      <button type="reset" class="btn" ng-click="buttonCancel()">Cancel</button>
+	    </div>
+    </div>
+	</div>
+	</div>
+	</div>
+	<!-- ----------------------Modal window--------------------- -->
+		<div class="modal fade" id="delModal">
+  			<div class="modal-header">
+    			<button class="close" data-dismiss="modal">x</button>
+    			<h4>Are You sure to do cancellation in reservation?</h4>
+  			</div>
+  			<div class="modal-body">
+  				<h4>{{delReserv.type}}</h4>
+    			<p>Check in date: {{delReserv.checkIn | date:'fullDate' }}</p>
+    			<p>Check out date: {{delReserv.checkOut | date:'fullDate' }}</p>
+  			</div>
+  			<div class="modal-footer">
+    			<a href="#" class="btn btn-warning" data-dismiss="modal">NO</a>
+    			<a href="#" class="btn" ng-click="deleteReserve()" data-dismiss="modal">YES</a>
+  			</div>
+		</div>
+	  <!-- ----------------------Modal window delete user--------------------- -->
+		<div class="modal fade" id="delUser">
+  			<div class="modal-header">
+    			<button class="close" data-dismiss="modal">x</button>
+    			<h4>Are You want to delete your account?!</h4>
+  			</div>
+  			<div class="modal-body">
+  				<p>All your data will be deleted. Are You sure? Don't do that!</p>
+  			</div>
+  			<div class="modal-footer">
+    			<a href="#" class="btn btn-warning" data-dismiss="modal">NO</a>
+    			<a class="btn" ng-click="deleteAccount()" data-dismiss="modal">YES</a>
+  			</div>
+		</div>
+	  <!-- ------------------------------------------------------------ -->    
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en' ng-app='myApp' ng-controller='reservationCtrl'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="js/angular.js"></script>
+	<script src="js/angular-cookie.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/reserv.js"></script>
+	<script src="js/factories.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link href="WebContent/css/bootstrap.min.css">
+<title>Reservation form</title>
+</head>
+<body>
+<div class='container'>
+	<h3>Hello {{email}}</h3>
+	<p>You want to make a reservation for:</p>
+	<p>{{room_type}}</p>
+	<p>Check in date will be {{checkIn | date:'fullDate' }}</p>
+	<p>Check out date will be {{checkOut | date:'fullDate' }}</p>
+	<h5>Price: ${{price}}</h5>
+	<hr>
+	<input type="button" class="btn btn-large" value="Make a reservation" ng-click="addReserv()">
+</div>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script> 
+</body>
+</html>

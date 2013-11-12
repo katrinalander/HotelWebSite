@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+    <script src="js/search.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+  <style type="text/css">
+  	.mySpan{ padding: 10px;}
+  	.table-borderless td,
+	.table-borderless th{ 
+   		 border: 0 !important
+		}
+  </style>
+  </head>
+  <body>
+
+<div ng-controller="searchCtrl"  class="container">
+    <!--  pre>Selected date is: <em>{{dt1 | date:'fullDate' }}</em>
+Selected date is: <em>{{dt2 | date:'fullDate' }}</em>
+    </pre-->
+    
+<div class="row mySpan">
+	<div class="span12">
+	<div class="row">
+		<div class="span2">
+			<label><p>Number of guests:</p></label>
+			<input type="text" class="input-small" ng-model="people">
+		</div>
+		<div class="span2">
+			<label><p>Number of rooms:</p></label>
+			<input type="text" class="input-small" ng-model="room">
+		</div>
+		<div class="span3">
+			<label><p>Check in:</p></label>
+		    <div class="form-horizontal">
+		        <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt1" is-open="opened1" min="minDate1" max="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" />
+		        <button class="btn btn-warning" ng-click="open1()"><i class="icon-calendar"></i></button>
+		    </div>
+		</div>
+		<div class="span3">
+			<label><p>Check out:</p></label>
+		    <div class="form-horizontal">
+		        <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt2" is-open="opened2" min="dt1" max="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" />
+		        <button class="btn btn-warning" ng-click="open2()"><i class="icon-calendar"></i></button>
+		    </div>
+		</div>
+		<br />
+		<div class="span2">
+			<input type="button" class="btn btn-large btn-warning" value="search" ng-click="search()">
+		</div>
+	</div>
+	</div>
+	
+	<div class="row">
+		<div class="span12">
+  			<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)"><p>{{alert.msg}}</p></alert>
+  		</div>
+	</div>
+			<div ng-show="indicator">
+				<p align="center"><img src="/pic-hotel/gif-load.gif"></p>
+			</div>
+		<div ng-show="searchShow">
+			<table class="table"><tr class="table-borderless"><td></td>
+				<td><h5>Type of room</h5></td><td><h5>Quantity</h5></td><td><h5>Price per night</h5></td><td><h5>Price per period</h5></td></tr>
+				<tr ng-repeat="room in ListOfRooms"><td>
+				<img src="{{room.imageUrl}}" width="128" height="128"></td>
+				<td>{{room.type}}</td><td>{{room.num}}</td><td>{{room.price_regular | currency}} p/night</td>
+				<td><div>{{room.price_regular*room.num*iterval.days | currency}}</div></td>
+				</tr>
+			</table>
+		<hr/>
+		<div class="row">
+		<div class="span12" align="center">
+			<h4>Total: {{total | currency}}</h4><input type="button" class="btn btn-warning" value="Reservation" ng-click="toReserv()">
+		</div>
+		</div>
+	 </div> 
+	 </div>
+</div>
+  </body>
+</html>
+

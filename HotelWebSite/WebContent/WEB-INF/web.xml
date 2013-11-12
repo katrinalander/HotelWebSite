@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <display-name>HotelWebSite</display-name>
+  <servlet>
+    <display-name>AllRoomServlet</display-name>
+    <servlet-name>AllRoomServlet</servlet-name>
+    <servlet-class>servlets.AllRoomServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>DeleteUserServlet</display-name>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>servlets.DeleteUserServlet</servlet-class>
+  </servlet>
+  <welcome-file-list>
+    <welcome-file>Login.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>

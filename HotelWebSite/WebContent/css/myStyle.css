@@ -1,0 +1,63 @@
+@CHARSET "ISO-8859-1";
+html { 
+		     background-image: url('/img/background33.jpg');
+		     background-repeat: repeat; 
+		 }
+		 body {
+		     background-color: transparent;
+		 }
+		 img{
+		  border-radius: 5px 5px 5px 5px;
+		 }
+		 .mySpan{
+		 background: white;
+		  border-radius: 5px 5px 5px 5px;
+		 }
+		 h1,h2,h3{
+		 color:orange;
+		 font-family:Script MT Bold;
+		 }
+		h4,a{
+		color:orange;
+		font-family:Georgia;
+		}
+		h5,p,label{
+		font-family:Georgia;
+		font-size:16px;
+		}
+	    .navbar-inner {
+		    background-color: white;
+		    background-image: linear-gradient(to bottom, orange, Khaki);
+		    background-repeat: repeat-x;
+		    border: 1px solid orange;
+		    border-radius: 4px 4px 4px 4px;
+		    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+		    min-height: 40px;
+		    padding-left: 20px;
+		    padding-right: 20px;
+		}
+		.navbar .nav > li > a {
+		    color: white;
+		    float: none;
+		    padding: 10px 15px;
+		    text-decoration: none;
+		    text-shadow: 0 0px 0 #ffffff;
+		}
+		.navbar .brand {
+		  display: block;
+		  float: left;
+		  padding: 10px 20px 10px;
+		  margin-left: -20px;
+		  font-size: 20px;
+		  font-weight: 200;
+		  color: white;
+		  text-shadow: 0 0px 0 #ffffff;
+		}
+.navbar .nav > li > a {
+    color: white;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-shadow: 0 0px 0 #ffffff;
+}
+		

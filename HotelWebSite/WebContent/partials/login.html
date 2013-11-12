@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head lang='en' ng-app='myApp'>
+    <meta charset="utf-8">
+    <script src="js/angular.js"></script>
+   	<script src="js/angular-cookie.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/factories.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link href="WebContent/css/bootstrap.min.css">
+<title>Login</title>
+    <!--  meta name="description" content="">
+    <meta name="author" content=""-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+</head>
+<body ng-controller='loginCtrl'>
+  <div class="mySpan span5">
+    <div class="content span5">
+      <div class="row">
+        <div class="span5">
+          <h4>LogIN/OUT</h4>
+          <form>
+          			<div class="row">
+						<div class="span4">
+				  			<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)"><p>{{alert.msg}}</p></alert>
+				  		</div>
+					</div>
+            <fieldset>
+              <div class="clearfix">
+                <input type="text" ng-model="email" placeholder="E-mail">
+              </div>
+              <div class="clearfix">
+                <input type="password" ng-model="password" placeholder="Password">
+              </div>
+              <button class="btn primary" type="submit" ng-click="validCtrl()" ng-hide="loginShow">Sign in</button>
+              <button class="btn primary" type="submit" ng-click="logoutCtrl()" ng-show="loginShow">Sign out</button>
+              <a href="#/new">	make a registration</a>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script> 
+</body>
+</html>
