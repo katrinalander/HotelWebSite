@@ -68,7 +68,7 @@ public class MailNotification extends Thread {
 			// second part (the image)
 			messageBodyPart = new MimeBodyPart();
 			DataSource fds = new FileDataSource
-			("C:\\pic-hotel\\logo.png");
+			("C:\\users\\Katrina\\git\\HotelWebSite\\HotelWebSite\\WebContent\\img\\logo.png");
 			messageBodyPart.setDataHandler(new DataHandler(fds));
 			messageBodyPart.setHeader("Content-ID","<image>");
 

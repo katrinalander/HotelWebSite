@@ -217,7 +217,7 @@ function roomCtrl ($scope,$timeout,$routeParams,dataFactory,$location,$rootScope
 	  var slides = $scope.slides = [];
 	  $scope.addSlide = function() {
 	    slides.push({
-	      image: ['/pic-hotel/' + roomType + '/' +'bedroom.jpg','/pic-hotel/' + roomType + '/' +'bathroom.jpg','/pic-hotel/' + roomType + '/' +'bedroom2.jpg','/pic-hotel/' + roomType + '/' +'patio.jpg'][slides.length % 4],
+	      image: ['/HotelWebSite/images/' + roomType + '/' +'bedroom.jpg','/HotelWebSite/images/' + roomType + '/' +'bathroom.jpg','/HotelWebSite/images/' + roomType + '/' +'bedroom2.jpg','/HotelWebSite/images/' + roomType + '/' +'patio.jpg'][slides.length % 4],
 	      text: ['bedroom','bathroom','bedroom','patio'][slides.length % 4]
 	    });
 	  };

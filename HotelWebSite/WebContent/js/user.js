@@ -1,12 +1,12 @@
 app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$cookieStore){
 
-	$scope.icon1="img/default.png";
-	$scope.icon2="img/default.png";
-	$scope.icon3="img/default.png";
-	$scope.icon4="img/default.png";
-	$scope.icon5="img/default.png";
-	$scope.icon6="img/default.png";
-	$scope.icon7="img/default.png";
+	$scope.icon1="HotelWebSite/img/default.png";
+	$scope.icon2="HotelWebSite/img/default.png";
+	$scope.icon3="HotelWebSite/img/default.png";
+	$scope.icon4="HotelWebSite/img/default.png";
+	$scope.icon5="HotelWebSite/img/default.png";
+	$scope.icon6="HotelWebSite/img/default.png";
+	$scope.icon7="HotelWebSite/img/default.png";
 	$scope.myResultVisible=false;
 
 	
@@ -51,17 +51,17 @@ app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$co
 		if($scope.fname==undefined){
 			$scope.fName="control-group error";
 			$scope.messFN=" please input your first name";
-			$scope.icon1="img/attention.png";
+			$scope.icon1="HotelWebSite/img/attention.png";
 		}
 		else if($scope.checkForm($scope.fname,'en')){
 			$scope.fName="control-group success";
 			$scope.messFN="";
-			$scope.icon1="img/success.png";
+			$scope.icon1="HotelWebSite/img/success.png";
 		}
 		else{
 			$scope.fName="control-group error";
 			$scope.messFN="only A-Z!";
-			$scope.icon1="img/attention.png";
+			$scope.icon1="HotelWebSite/img/attention.png";
 		}
 	};//validFName
 	$scope.validLName=function(){
@@ -69,17 +69,17 @@ app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$co
 		if($scope.lname==undefined){
 			$scope.lName="control-group error";
 			$scope.messLN=" please input your last name";
-			$scope.icon2="img/attention.png";
+			$scope.icon2="HotelWebSite/img/attention.png";
 		}
 		else if($scope.checkForm($scope.lname,'en')){
 			$scope.lName="control-group success";
 			$scope.messLN="";
-			$scope.icon2="img/success.png";
+			$scope.icon2="HotelWebSite/img/success.png";
 		}
 		else{
 			$scope.lName="control-group error";
 			$scope.messLN="only A-Z!";
-			$scope.icon2="img/attention.png";
+			$scope.icon2="HotelWebSite/img/attention.png";
 		}
 	};//validLName
 	$scope.validEmail=function(){
@@ -87,17 +87,17 @@ app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$co
 		if($scope.email==undefined){
 			$scope.fieldEmail="control-group error";
 			$scope.messEmail=" please input your email";
-			$scope.icon3="img/attention.png";
+			$scope.icon3="HotelWebSite/img/attention.png";
 		}
 		else if($scope.checkForm($scope.email,'email')){
 			$scope.fieldEmail="control-group success";
 			$scope.messEmail="";
-			$scope.icon3="img/success.png";
+			$scope.icon3="HotelWebSite/img/success.png";
 		}
 		else{
 			$scope.fieldEmail="control-group error";
 			$scope.messEmail="only 0-9!";
-			$scope.icon3="img/attention.png";
+			$scope.icon3="HotelWebSite/img/attention.png";
 		}
 	};//validEmail
 	$scope.validAddress=function(){
@@ -106,18 +106,18 @@ app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$co
 				$scope.country==undefined && $scope.phone==undefined){
 			$scope.fieldAddress="control-group error";
 			$scope.messAddress=" please fill all fields of address";
-			$scope.icon4="img/attention.png";
+			$scope.icon4="HotelWebSite/img/attention.png";
 		}
 		else if($scope.checkForm($scope.sity,'en') && $scope.checkForm($scope.state,'en') && $scope.checkForm($scope.zip,'123')
 				&& $scope.checkForm($scope.country,'en')){
 			$scope.fieldAddress="control-group success";
 			$scope.messAddress="";
-			$scope.icon4="img/success.png";
+			$scope.icon4="HotelWebSite/img/success.png";
 		}
 		else{
 			$scope.fieldAddress="control-group error";
 			$scope.messAddress=" please fill correct all fields of address";
-			$scope.icon4="img/attention.png";
+			$scope.icon4="HotelWebSite/img/attention.png";
 		}
 	};//valid address
 	$scope.validPhone=function(){
@@ -125,12 +125,12 @@ app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$co
 		if ($scope.phone==undefined){
 			$scope.fieldPhone="control-group error";
 			$scope.messPhone=" please input your phone number";
-			$scope.icon5="img/attention.png";
+			$scope.icon5="HotelWebSite/img/attention.png";
 		}
 		else if($scope.checkForm($scope.phone,'123')){
 			$scope.fieldPhone="control-group success";
 			$scope.messPhone="";
-			$scope.icon5="img/success.png";
+			$scope.icon5="HotelWebSite/img/success.png";
 		}
 		else{
 			$scope.fieldPhone="control-group error";
@@ -167,7 +167,7 @@ app.controller('Controller',function($scope,dataFactory,$rootScope,$location,$co
 		else{
 			$scope.fieldConfpassword="control-group error";
 			$scope.messConfpassword="you must input same password";
-			$scope.icon7="img/attention.png";
+			$scope.icon7="HotelWebSite/img/attention.png";
 		}
 	};//validPassword
 		
